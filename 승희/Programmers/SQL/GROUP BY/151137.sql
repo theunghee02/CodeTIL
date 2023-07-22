@@ -1,0 +1,6 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/151137
+SELECT CAR_TYPE, SUM((OPTIONS LIKE '%시트%')) as CARS
+FROM CAR_RENTAL_COMPANY_CAR
+GROUP BY CAR_TYPE
+HAVING CARS > 0
+ORDER BY CAR_TYPE;
