@@ -1,0 +1,6 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/144854
+SELECT BOOK_ID, AUTHOR_NAME, date_format(PUBLISHED_DATE, "%Y-%m-%d") as PUBLISHED_DATE
+FROM BOOK
+JOIN AUTHOR ON AUTHOR.AUTHOR_ID = BOOK.AUTHOR_ID
+WHERE CATEGORY = "경제"
+ORDER BY PUBLISHED_DATE;
