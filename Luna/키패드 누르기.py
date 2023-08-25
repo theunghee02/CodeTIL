@@ -4,8 +4,9 @@ def solution(numbers, hand):
             7 : [2,0], 8 : [2,1], 9 : [2,2],
             '*' : [3,0], 0 : [3,1], '#' : [3,2] }
     answer = ''
-    right = num['#']
-    left = num['*']
+    right = '#'
+    left = '*'
+  
     for i in numbers:
         if i in [1,4,7]:
             left = i
@@ -38,5 +39,3 @@ def solution(numbers, hand):
                     answer +='R'
                     right = i
     return answer
-
-print(solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], "right"))
