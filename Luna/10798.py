@@ -13,4 +13,4 @@ for j in range(len(max_row)):
             print(my_list[i][j], end="")
         else: continue
 
-#print(my_list)
+
