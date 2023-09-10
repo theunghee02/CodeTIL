@@ -31,12 +31,12 @@ def dfs(start):
 def bfs(start):
     queue = deque()
     queue.append(start)
-    print(now, end=" ")
+
     while len(queue) != 0:
         now = queue.popleft()
-        if visited2[now]: continue
-        visited2[now] = 1
-       
+        if visited2[now] == 0:
+            visited2[now] = 1
+        print(now, end=" ")
 
         ## now와 연결이 된 애들
         for i in range(len(matrix[start])):
