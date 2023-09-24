@@ -22,7 +22,7 @@ def check(u):
             if len(stack) == 0:
                 return False
             stack.pop()
-    return True
+    return len(stack) == 0
 
 def solution(p):
     if len(p)== 0: return ""

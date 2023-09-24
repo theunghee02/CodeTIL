@@ -15,7 +15,7 @@ def dfs(x,y):
     if list[x][y] == 1:
         global cnt
         cnt +=1
-        list[x][y] = 0
+        list[x][y] = 0 # 방문한곳은 0으로
         ## 상하좌우 재귀
         for i in range(4):
             nx = x + dx[i]
@@ -24,7 +24,7 @@ def dfs(x,y):
         return True # 집이 있을 경우 True
     return False # 없을 경우 False
 
-home_cnt = []
+home_cnt = [] # 집의 단지수를 담는 리스트
 for i in range(n):
     for j in range(n):
         if dfs(i, j) == True:
