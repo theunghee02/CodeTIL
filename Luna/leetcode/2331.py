@@ -4,7 +4,7 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: bool
         """
-        if (root.val == 0) : return False
+        if root.val == 0 : return False
         elif root.val == 1 : return True
         b1 = self.evaluateTree(root.left)
         b2 = self.evaluateTree(root.right)
