@@ -20,6 +20,7 @@ def func(numbers, visited, start):
             visited[i] = True
             numbers[start] = i+1
             func(numbers, visited, start+1)
+            # 백트래킹 (왔던길을 되돌아기도록, 원상복구)
             visited[i] = False
 
 n, m = map(int, input().split())
