@@ -18,7 +18,6 @@ def func(time, pay, start):
         if i + time[i] -1 <len(time) :
             result = pay[i] + func(time, pay, i + time[i])
             ret = max(ret, result)
-            print(result)
     ## 현재 ret을 캐시에 넣기
     cache[start] = ret
     return ret
