@@ -1,11 +1,16 @@
-def func(matrix, row, col):
+def func(matrix, row, col, cache):
     if row == len(matrix) -1 and col == len(matrix) -1:
         return 1
     if row >= len(matrix) or row < 0 or col >= len(matrix):
         return 0
+
     jump = matrix[row][col]
     total_paths = 0
-
+    ## DP는 key 값에 따라 달라진다 -> row, col 의 2차원 배열로 구성
+    # 이미 계산된 적이 있다면
+    if cache[row][col] != -1:
+        return cache[row][col]
+    
     # 아래로 이동
     if row + jump < N:
         total_paths += func(matrix, row + jump, col)
@@ -14,14 +19,13 @@ def func(matrix, row, col):
     if col + jump < N:
         total_paths += func(matrix, row, col + jump)
 
+    cache[row][col] = total_paths
     return total_paths
 
-
+import sys
 N = int(input())
-matrix = [[0 for _ in range(N)] for _ in range(N)]
-for i in range(N):
-    line = input().split(" ")
-    for j in range(N):
-        matrix[i][j] = int(line[j])
+read = sys.stdin.readline
+matrix = [list(map(int, read().split())) for _ in range(N)]
+cache = [[-1] * N for _ in range(N)]
 
-print(func(matrix, 0,0))
+print(func(matrix, 0,0, cache))
