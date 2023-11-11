@@ -1,7 +1,7 @@
 def func(matrix, row, col, cache):
     if row == len(matrix) -1 and col == len(matrix) -1:
         return 1
-    if row >= len(matrix) or row < 0 or col >= len(matrix):
+    if row >= len(matrix) or row < 0 or col >= len(matrix) or col <0:
         return 0
 
     jump = matrix[row][col]
@@ -13,11 +13,11 @@ def func(matrix, row, col, cache):
     
     # 아래로 이동
     if row + jump < N:
-        total_paths += func(matrix, row + jump, col)
+        total_paths += func(matrix, row + jump, col, cache)
 
     # 오른쪽으로 이동
     if col + jump < N:
-        total_paths += func(matrix, row, col + jump)
+        total_paths += func(matrix, row, col + jump, cache)
 
     cache[row][col] = total_paths
     return total_paths
