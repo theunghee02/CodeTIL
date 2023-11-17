@@ -5,6 +5,8 @@ def func(matrix, row, col, cache):
         return 0
 
     jump = matrix[row][col]
+    if jump == 0:
+        return 0
     total_paths = 0
     ## DP는 key 값에 따라 달라진다 -> row, col 의 2차원 배열로 구성
     # 이미 계산된 적이 있다면

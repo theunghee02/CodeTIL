@@ -11,7 +11,7 @@ for i in arr:
     for j in tmp:
         sum += int(j)
     numbers.append(sum)
-print(numbers)
+#print(numbers)
 sum2 = numbers[0]
 for i in range (1,len(numbers)):
     sum2 -= numbers[i]
