@@ -6,19 +6,17 @@
 #
 # # n =서 , m = 동
 def bridge_count(n, m, dp):
+    if n == m:
+        dp[n][m] = 1
+        return 1
+    if n == 1:
+        dp[n][m] = m
     if dp[n][m] != -1:
         return dp[n][m]
-    if n == m or m == 0:
-        dp[n][m] = 1
-    elif n == 1:
-        dp[n][m] = m
-    else:
-        dp[n][m] = bridge_count(n - 1, m - 1, dp) + bridge_count(n, m - 1, dp)
-
+    dp[n][m] = bridge_count(n, m-1, dp) + bridge_count(n-1, m-1, dp)
     return dp[n][m]
-
 T = int(input())
-for _ in range(T):
+for i in range(T):
     a, b = map(int, input().split())
-    dp = [[-1 for _ in range(b + 1)] for _ in range(a + 1)]
+    dp = [[-1 for _ in range(b+1)]for _ in range(a + 1)]
     print(bridge_count(a, b, dp))
