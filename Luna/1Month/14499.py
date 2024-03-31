@@ -7,12 +7,12 @@ arr_map = [list(map(int, input().split()))for i in range(N)]
 ## 명령어배열
 command = list(map(int, input().split()))
 # 동 - 1, 서 - 2, 북 - 3, 남 -4
-dx = [0,1, -1, 0, 0]
-dy = [0, 0, 0, -1, 1]
+dx = [0, 0, -1, 1]
+dy = [1, -1, 0, 0]
 
 for c in command: # 명령어에 따라 주사위 위치 변경
-    nx = x + dx[c]
-    ny = y + dy[c]
+    nx = x + dx[c-1]
+    ny = y + dy[c-1]
     if not 0 <= nx < N or not 0 <= ny < M:  ## 범위 밖에 있는 좌표면 continue
         continue ## 이게 가장 문제 일것 같은데 이해가 안됨
     # 명령어에 따라 주사위의 좌표를 업뎃해줘야 함
