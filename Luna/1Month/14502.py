@@ -7,8 +7,9 @@ dy = [1, -1, 0, 0]
 dx = [0, 0, -1, 1]
 from collections import deque
 def bfs():
+    visited = [[False for _ in range(M)]for _ in range(N)]
     queue = deque()
-    bfs_cnt = 0
+
     for i in range(N):
         for j in range(M):
             if matrix[i][j] == 2:
@@ -21,13 +22,22 @@ def bfs():
             ny = y + dy[i]
 
             if 0<=nx<N and 0<=ny<M:
-                if matrix[nx][ny] == 0: # 빈칸이라면
-                    matrix[ny][nx] = 2 # 감염
-                    bfs_cnt +=1
+                if matrix[nx][ny] == 0 and visited[nx][ny] == False: # 빈칸이라면
+                    visited[nx][ny] = True # 감염
+                    # bfs_cnt +=1
                     queue.append((nx, ny))
-def makeWall(cnt):
+
+    bfs_cnt = 0
+    for i in range(N):
+        for j in range(M):
+            if matrix[i][j] == 0 and visited[i][j] == False:
+                bfs_cnt +=1
+    return bfs_cnt
+
+def makeWall(cnt = 0):
+    global max_safe_area
     if cnt == 3:
-        bfs()
+        max_safe_area = max(max_safe_area, bfs())
         return
 
     for i in range(N):
@@ -35,5 +45,7 @@ def makeWall(cnt):
             if matrix[i][j] == 0:
                 matrix[i][j] = 1 # 빈공간이라면 벽을 세우기
                 makeWall(cnt+1) # 다시 벽 만들러가
-
-  makeWall(1)
+                matrix[i][j] = 0
+max_safe_area = 0
+makeWall()
+print(max_safe_area)
